@@ -13,12 +13,20 @@ def load_data(file="combined.npy"):
 
     X = data[:split_num].T
     print("Input data(landmark) shape:", X.shape)
+    # Standardize X
+    X_mean = X.mean(axis=0)
+    X_std = X.std(axis=0) + 1e-8  # small epsilon to avoid division by zero
+    X = (X - X_mean) / X_std
 
 
     X_tensor = torch.tensor(X, dtype=torch.float32)
 
     Y = data[split_num:,:].T
     print("Output data(target) shape:", Y.shape)
+
+    Y_mean = Y.mean(axis=0)
+    Y_std = Y.std(axis=0) + 1e-8
+    Y = (Y - Y_mean) / Y_std
 
     Y_tensor = torch.tensor(Y, dtype=torch.float32)
 
