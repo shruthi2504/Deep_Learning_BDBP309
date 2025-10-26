@@ -1,0 +1,59 @@
+Image Caption Generation - Lab 15
+---------------------------------
+Deep Learning Lab Exercise
+
+This project trains RNN, LSTM, and GRU models to generate image captions
+using pre-extracted image features and caption text data.
+
+---------------------------------
+WORKFLOW ORDER
+---------------------------------
+
+1. build_caption_embeddings.py
+   - Tokenizes captions and builds vocabulary.
+   - Creates 'vocab.pkl', 'inv_vocab.pkl', and 'embedding_matrix.npy'.
+   Command:
+       python build_caption_embeddings.py
+
+2. extract_image_features.py
+   - Extracts image features using a pretrained CNN (e.g., ResNet50).
+   - Outputs 'features_to_rnn.pkl' containing image feature vectors.
+   Command:
+       python extract_image_features.py
+
+3. Prepare ground truth captions
+   - Ensure that 'ground_truth.pkl' is available.
+   - This file contains image IDs and tokenized captions.(created in step 1)
+
+4. Train caption generation models
+   Run one or more of the following models:
+
+   a. Vanilla RNN model:
+       python ImageCaptionRNN.py
+
+   b. LSTM model:
+       python ImageCaptionLSTM.py
+
+   c. GRU model:
+       python ImageCaptionsGRU.py
+
+   Each model:
+   - Loads the vocabulary, embeddings, and image features.
+   - Trains for several epochs.
+   - Reports training loss and BLEU score for evaluation.
+
+5.Lab15_vanillaRNN_pytorch.py
+   - Demonstrates basic RNN sequence modeling for understanding.
+
+---------------------------------
+EXPECTED FILES
+---------------------------------
+
+After running all steps, you should have:
+- vocab.pkl
+- inv_vocab.pkl
+- embedding_matrix.npy
+- features_to_rnn.pkl
+- ground_truth.pkl
+- (Optional) trained model files
+
