@@ -1,0 +1,30 @@
+Results:
+
+
+| Metric                                           | **LSTM**                          | **GRU**                              |
+| :----------------------------------------------- | :-------------------------------- | :----------------------------------- |
+| Final Training Loss                              | 5.15                              | **4.70**                             |
+| Final Validation Loss                            | 5.19                              | **4.93**                             |
+| Training Time (10 epochs)                        | ~3000 sec                         | **~2700 sec**                        |
+| Average Time per Epoch                           | ~300 sec                          | **~270 sec**                         |
+| Translation Quality                              | Rough, repetitive ("एक एक एक एक") | Slightly smoother, fewer repetitions |
+| Example Output (for “internet is international”) | “मैं एक पास एक तरह से”            | **“मैं इस तरह से एक ही”**            |
+
+Observations
+
+Both models converge slowly, with validation loss decreasing modestly across epochs.
+
+GRU performs slightly better — lower loss, faster training, and more stable translations.
+
+Both suffer from repeated phrases and loss of meaning due to:
+
+No attention mechanism
+
+Greedy decoding
+
+Limited vocabulary and dataset
+
+Conclusion
+
+GRU > LSTM for this setup — it trains faster, generalizes slightly better, and produces marginally more coherent outputs.
+However, both models require attention and more epochs for meaningful translations.
